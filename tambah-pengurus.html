@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pengurus - HIMATIF</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-primary text-white" id="sidebar-wrapper">
+            <div class="sidebar-heading text-center py-4 fs-4 fw-bold border-bottom border-light">HIMATIF</div>
+            <div class="list-group list-group-flush my-3">
+                <a href="dashboard.html" class="list-group-item list-group-item-action bg-transparent text-white"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+                <a href="pengurus.html" class="list-group-item list-group-item-action bg-transparent text-white"><i class="fas fa-users me-2"></i>Data Pengurus</a>
+                <a href="tambah-pengurus.html" class="list-group-item list-group-item-action bg-transparent text-white active fw-bold"><i class="fas fa-user-plus me-2"></i>Tambah Pengurus</a>
+                <a href="rekap-pengurus.html" class="list-group-item list-group-item-action bg-transparent text-white"><i class="fas fa-chart-pie me-2"></i>Rekap Pengurus</a>
+                <a href="#" id="btn-logout" class="list-group-item list-group-item-action bg-transparent text-white text-danger mt-5"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
+            </div>
+        </div>
+        
+        <div id="page-content-wrapper" class="bg-light w-100">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 px-4 shadow-sm">
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-bars fs-4 me-3 text-primary" id="menu-toggle" style="cursor: pointer;"></i>
+                    <h5 class="m-0 fw-bold text-dark" id="form-title">Tambah Data Pengurus</h5>
+                </div>
+            </nav>
+
+            <div class="container-fluid px-4 py-4">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body p-4">
+                                <div id="form-alert" class="alert alert-danger d-none" role="alert"></div>
+                                <form id="form-pengurus">
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">NIM <span class="text-danger">*</span></label>
+                                            <input type="number" id="input-nim" class="form-control" placeholder="Masukkan NIM" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
+                                            <input type="text" id="input-nama" class="form-control" placeholder="Masukkan Nama Lengkap" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Jenis Kelamin <span class="text-danger">*</span></label>
+                                            <select id="input-jk" class="form-select" required>
+                                                <option value="" selected disabled>Pilih Jenis Kelamin</option>
+                                                <option value="Laki-laki">Laki-laki</option>
+                                                <option value="Perempuan">Perempuan</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">No. HP <span class="text-danger">*</span></label>
+                                            <input type="text" id="input-hp" class="form-control" placeholder="Contoh: 081234567890" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Jabatan <span class="text-danger">*</span></label>
+                                            <select id="input-jabatan" class="form-select" required>
+                                                <option value="" selected disabled>Pilih Jabatan</option>
+                                                <option value="KAHIM">KAHIM</option>
+                                                <option value="WAKAHIM">WAKAHIM</option>
+                                                <option value="Koordinator Eksternal">Koordinator Eksternal</option>
+                                                <option value="Koordinator Internal">Koordinator Internal</option>
+                                                <option value="Sekretaris Umum">Sekretaris Umum</option>
+                                                <option value="Bendahara Umum">Bendahara Umum</option>
+                                                <option value="Kepala Divisi">Kepala Divisi</option>
+                                                <option value="Wakil Kepala Divisi">Wakil Kepala Divisi</option>
+                                                <option value="Anggota">Anggota</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Divisi <span class="text-danger">*</span></label>
+                                            <select id="input-divisi" class="form-select" required>
+                                                <option value="" selected disabled>Pilih Divisi</option>
+                                                <option value="Pengurus Inti">Pengurus Inti</option>
+                                                <option value="Agama">Agama</option>
+                                                <option value="Administrasi dan Kesekretariatan">Administrasi & Kesekretariatan</option>
+                                                <option value="Kaderisasi">Kaderisasi</option>
+                                                <option value="Humas">Humas</option>
+                                                <option value="IPTEK">IPTEK</option>
+                                                <option value="Minat dan Bakat">Minat dan Bakat</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-4">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Periode <span class="text-danger">*</span></label>
+                                            <input type="text" id="input-periode" class="form-control" value="2026/2027" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Status <span class="text-danger">*</span></label>
+                                            <select id="input-status" class="form-select" required>
+                                                <option value="Aktif" selected>Aktif</option>
+                                                <option value="Tidak Aktif">Tidak Aktif</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex justify-content-end gap-2">
+                                        <button type="button" id="btn-reset" class="btn btn-secondary">Reset</button>
+                                        <button type="submit" class="btn btn-primary"><i class="fas fa-save me-1"></i> Simpan Data</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/pengurus.js"></script>
+</body>
+</html>
